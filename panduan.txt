@@ -1,0 +1,8 @@
+[Panduan setup Laravel]
+
+[Database]
+
+*Konfigurasi database pada file '.env'
+*jika sudah, jalankan
+
+> php artisan serve

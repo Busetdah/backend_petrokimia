@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pallete_dispenser_detail_motor1', function (Blueprint $table) {
+        Schema::create('pallete_dispenser_detail_right', function (Blueprint $table) {
             $table->id();
-            $table->float('temperature');
-            $table->float('vibration');
-            $table->float('speed');
-            $table->float('airpressure');
+            $table->float('airpressureforward');
+            $table->float('airpressureretract');
+            $table->float('rotationgrip');
+            $table->string('reedswitch');
             $table->timestamp('created_at')->useCurrent();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pallete_dispenser_detail_motor1');
+        Schema::dropIfExists('pallete_dispenser_detail_right');
     }
 };

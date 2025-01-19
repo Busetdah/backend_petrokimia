@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class roll_detail_motor3Resource extends JsonResource
+class pallete_dispenser_detail_rightResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,13 +14,12 @@ class roll_detail_motor3Resource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        //return parent::toArray($request);
         return[
             'id' => $this->id,
-            'temperature' => $this->temperature,
-            'vibration' => $this->vibration,
-            'speed' => $this->speed,
-            'airpressure' => $this->airpressure,
+            'airpressureforward' => $this->airpressureforward,
+            'airpressureretract' => $this->airpressureretract,
+            'rotationgrip' => $this->rotationgrip,
+            'reedswitch' => $this->reedswitch,
             'created_at' => $this->created_at,
         ];
     }

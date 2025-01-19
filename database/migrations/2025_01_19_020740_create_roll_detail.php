@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roll_detail_motor4', function (Blueprint $table) {
+        Schema::create('roll_detail', function (Blueprint $table) {
             $table->id();
-            $table->float('temperature');
-            $table->float('vibration');
-            $table->float('speed');
-            $table->float('airpressure');
+            $table->float('rpm_motor');
+            $table->float('rpm_roll');
+            $table->float('presentase');
+            $table->float('getaran_hz');
             $table->timestamp('created_at')->useCurrent();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roll_detail_motor4');
+        Schema::dropIfExists('roll_detail');
     }
 };

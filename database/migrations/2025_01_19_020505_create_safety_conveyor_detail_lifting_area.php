@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('safety_conveyor_detail_motor2', function (Blueprint $table) {
+        Schema::create('safety_conveyor_detail_lifting_area', function (Blueprint $table) {
             $table->id();
-            $table->float('temperature');
-            $table->float('vibration');
-            $table->float('speed');
-            $table->float('airpressure');
+            $table->string('lifting1');
+            $table->string('lifting2');
+            $table->float('palletdistance');
+            $table->float('elapsedtime');
             $table->timestamp('created_at')->useCurrent();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('safety_conveyor_detail_motor2');
+        Schema::dropIfExists('safety_conveyor_detail_lifting_area');
     }
 };

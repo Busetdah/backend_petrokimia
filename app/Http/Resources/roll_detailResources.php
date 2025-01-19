@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class pallete_dispenser_detail_motor4Resource extends JsonResource
+class roll_detailResources extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +16,10 @@ class pallete_dispenser_detail_motor4Resource extends JsonResource
     {
         return[
             'id' => $this->id,
-            'temperature' => $this->temperature,
-            'vibration' => $this->vibration,
-            'speed' => $this->speed,
-            'airpressure' => $this->airpressure,
+            'rpm_motor' => $this->rpm_motor,
+            'rpm_roll' => $this->rpm_roll,
+            'presentase' => $this->presentase,
+            'getaran_hz' => $this->getaran_hz,
             'created_at' => $this->created_at,
         ];
     }

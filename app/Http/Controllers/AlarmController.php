@@ -123,7 +123,7 @@ class AlarmController extends Controller
             $errors[] = 'temperaturenya ' . $item->temperature . ' °C';
         }
         if (isset($item->speed) && $item->speed < 50) {
-            $errors[] = 'kecepatannya ' . $item->speed . ' psi';
+            $errors[] = 'kecepatannya ' . $item->speed . ' RPM';
         }
         if (isset($item->arus) && $item->arus < 50) {
             $errors[] = 'arusnya ' . $item->arus . ' A';

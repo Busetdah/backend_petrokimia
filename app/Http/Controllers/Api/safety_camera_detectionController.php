@@ -11,10 +11,9 @@ class safety_camera_detectionController extends Controller
 {
     public function index(Request $request)
 {
-    // Validasi query parameter
     $request->validate([
-        'limit' => 'sometimes|integer|min:1|max:100', // Batasi limit antara 1 dan 100
-        'page' => 'sometimes|integer|min:1', // Pastikan page adalah integer positif
+        'limit' => 'sometimes|integer|min:1|max:100',
+        'page' => 'sometimes|integer|min:1',
     ]);
 
     $perPage = $request->query('limit', 10);

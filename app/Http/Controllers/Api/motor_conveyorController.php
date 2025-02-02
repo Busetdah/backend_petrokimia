@@ -18,7 +18,6 @@ class motor_conveyorController extends Controller
             ], 200);
         }
 
-        // Jika data ada, gunakan resource untuk menampilkan data
         return new motor_conveyorResource($motor_conveyors);
     }
 }

@@ -26,11 +26,10 @@ class motor_conveyor_detail_motor1Controller extends Controller
         ], 200);
     }
 
-    // Ambil hanya ID dari 10 data terakhir
     $ids = $motor_conveyor_details->pluck('id');
 
     return response()->json([
-        'data' => $motor_conveyor_details // Kirim seluruh koleksi atau properti tertentu
+        'data' => $motor_conveyor_details
     ], 200);
 }
 

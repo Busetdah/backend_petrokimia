@@ -18,7 +18,6 @@ class rollController extends Controller
             ], 200);
         }
 
-        // Jika data ada, gunakan resource untuk menampilkan data
         return new rollResource($rolls);
     }
 }

@@ -18,7 +18,6 @@ class pallet_dispenserController extends Controller
         ], 200);
     }
 
-    // Jika data ada, gunakan resource untuk menampilkan data
     return new pallet_dispenserResource($pallet_dispensers);
     }
 }

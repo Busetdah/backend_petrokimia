@@ -18,7 +18,6 @@ class arm_robotController extends Controller
             ], 200);
         }
 
-        // Jika data ada, gunakan resource untuk menampilkan data
         return new arm_robotResource($arm_robot);
     }
 }

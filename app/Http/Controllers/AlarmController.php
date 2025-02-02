@@ -70,13 +70,13 @@ class AlarmController extends Controller
         ->get();
 
     $palleteLeft = DB::table('pallete_dispenser_detail_left')
-        ->select('id', 'airpressureforward', 'airpressureretract', 'rotationgrip', DB::raw('"pallete_dispenser_detail_left" as source'), 'created_at')
+        ->select('id', 'airpressureforward', 'airpressureretract', 'rotationgrip', 'reedswitch', DB::raw('"pallete_dispenser_detail_left" as source'), 'created_at')
         ->orderBy('created_at', 'desc')
         ->limit(1)
         ->get();
 
     $palleteRight = DB::table('pallete_dispenser_detail_right')
-        ->select('id', 'airpressureforward', 'airpressureretract', 'rotationgrip', DB::raw('"pallete_dispenser_detail_right" as source'), 'created_at')
+        ->select('id', 'airpressureforward', 'airpressureretract', 'rotationgrip', 'reedswitch', DB::raw('"pallete_dispenser_detail_right" as source'), 'created_at')
         ->orderBy('created_at', 'desc')
         ->limit(1)
         ->get();
@@ -113,41 +113,59 @@ class AlarmController extends Controller
 
     $checkForError = function ($item) use ($sourceMapping) {
         $errors = [];
-        if (isset($item->value) && $item->value < 50) {
+        if (isset($item->value) && $item->value < 70) {
             $errors[] = 'valuenya ' . $item->value;
         }
-        if (isset($item->vibration) && $item->vibration < 50) {
+        if (isset($item->vibration) && $item->vibration < 70) {
             $errors[] = 'vibrasinya ' . $item->vibration . '%';
         }
-        if (isset($item->temperature) && $item->temperature > 50) {
+        if (isset($item->temperature) && $item->temperature > 60) {
             $errors[] = 'temperaturenya ' . $item->temperature . ' °C';
         }
         if (isset($item->speed) && $item->speed < 50) {
             $errors[] = 'kecepatannya ' . $item->speed . ' RPM';
         }
-        if (isset($item->arus) && $item->arus < 50) {
+        if (isset($item->arus) && $item->arus < 150) {
             $errors[] = 'arusnya ' . $item->arus . ' A';
         }
-        if (isset($item->airpressureforward) && $item->airpressureforward < 50) {
-            $errors[] = 'Air Pressure Forwardnya ' . $item->airpressureforward . ' psi';
+        if (isset($item->airpressure) && $item->airpressure < 7) {
+            $errors[] = 'Air Pressurenya ' . $item->airpressure . ' bar';
         }
-        if (isset($item->airpressureretract) && $item->airpressureretract < 50) {
-            $errors[] = 'Air Pressure Retractnya ' . $item->airpressureretract . ' psi';
+        if (isset($item->airpressureforward) && $item->airpressureforward < 8) {
+            $errors[] = 'Air Pressure Forwardnya ' . $item->airpressureforward . ' bar';
         }
-        if (isset($item->rotationgrip) && $item->rotationgrip < 50) {
+        if (isset($item->airpressureretract) && $item->airpressureretract < 8) {
+            $errors[] = 'Air Pressure Retractnya ' . $item->airpressureretract . ' bar';
+        }
+        if (isset($item->reedswitch) && $item->reedswitch < 1) {
+            $errors[] = 'Reedswitchnya ' . $item->reedswitch;
+        }
+        if (isset($item->rotationgrip) && $item->rotationgrip < 0) {
             $errors[] = 'Rotation Gripnya ' . $item->rotationgrip . ' °';
         }
-        if (isset($item->palletdistance) && $item->palletdistance < 50) {
+        if (isset($item->palletdistance) && $item->palletdistance < 10) {
             $errors[] = 'Jarak Palletenya ' . $item->palletdistance . ' cm';
         }
-        if (isset($item->rpm_motor) && $item->rpm_motor < 50) {
+        if (isset($item->rpm_motor) && $item->rpm_motor < 1500) {
             $errors[] = 'Kecepatan Motornya ' . $item->rpm_motor . ' RPM';
         }
-        if (isset($item->getaran_hz) && $item->getaran_hz < 50) {
+        if (isset($item->getaran_hz) && $item->getaran_hz < 10) {
             $errors[] = 'Getarannya ' . $item->getaran_hz . ' HZ';
         }
-        if (isset($item->rpm_roll) && $item->rpm_roll < 50) {
+        if (isset($item->lifting1) && $item->lifting1 < 10) {
+            $errors[] = 'Lifting 1 nya ' . $item->lifting1 . ' HZ';
+        }
+        if (isset($item->lifting2) && $item->lifting2 < 10) {
+            $errors[] = 'Lifting 2 nya ' . $item->lifting2 . ' HZ';
+        }
+        if (isset($item->rpm_roll) && $item->rpm_roll < 100) {
             $errors[] = 'Kecepatan Rollnya ' . $item->rpm_roll . ' RPM';
+        }
+        if (isset($item->presentase) && $item->presentase < 70) {
+            $errors[] = 'Presentasenya ' . $item->presentase . ' RPM';
+        }
+        if (isset($item->elapsedtime) && $item->elapsedtime < 70) {
+            $errors[] = 'Elapsed Time nya ' . $item->elapsedtime . ' RPM';
         }
 
         if (!empty($errors)) {

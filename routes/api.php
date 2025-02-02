@@ -15,9 +15,6 @@ use App\Http\Controllers\Api\safety_conveyor_detail_lifting_areaController;
 use App\Http\Controllers\Api\pallete_dispenser_detail_leftController;
 use App\Http\Controllers\Api\pallete_dispenser_detail_rightController;
 use App\Http\Controllers\Api\arm_robot_detail_motor1Controller;
-use App\Http\Controllers\Api\arm_robot_detail_motor2Controller;
-use App\Http\Controllers\Api\arm_robot_detail_motor3Controller;
-use App\Http\Controllers\Api\arm_robot_detail_motor4Controller;
 use App\Http\Controllers\AlarmController;
 use App\Http\Controllers\HistoryController;
 use Illuminate\Http\Request;
@@ -42,9 +39,6 @@ use App\Http\Middleware\RestrictToFrontend;
     Route::apiResource('pallete_dispenser_detail_left', pallete_dispenser_detail_leftController::class);
     Route::apiResource('pallete_dispenser_detail_right', pallete_dispenser_detail_rightController::class);
     Route::apiResource('arm_robot_detail_motor1', arm_robot_detail_motor1Controller::class);
-    Route::apiResource('arm_robot_detail_motor2', arm_robot_detail_motor2Controller::class);
-    Route::apiResource('arm_robot_detail_motor3', arm_robot_detail_motor3Controller::class);
-    Route::apiResource('arm_robot_detail_motor4', arm_robot_detail_motor4Controller::class);
 // });
 
 Route::get('/user', function (Request $request) {

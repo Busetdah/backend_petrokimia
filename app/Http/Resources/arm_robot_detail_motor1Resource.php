@@ -18,8 +18,6 @@ class arm_robot_detail_motor1Resource extends JsonResource
             'id' => $this->id,
             'temperature' => $this->temperature,
             'vibration' => $this->vibration,
-            'speed' => $this->speed,
-            'airpressure' => $this->airpressure,
             'created_at' => $this->created_at,
         ];
     }

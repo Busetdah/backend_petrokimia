@@ -19,7 +19,7 @@ class motor_conveyor_detail_motor2Resource extends JsonResource
             'temperature' => $this->temperature,
             'vibration' => $this->vibration,
             'speed' => $this->speed,
-            'airpressure' => $this->airpressure,
+            'arus' => $this->arus,
             'created_at' => $this->created_at,
         ];
     }

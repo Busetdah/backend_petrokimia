@@ -20,7 +20,8 @@ class motor_conveyor_detail_motor2Controller extends Controller
                 ['temperature' => '00.0',
                        'vibration' => '00.0',
                        'speed' => '00.0',
-                       'airpressure' => '00.0']
+                       'arus' => '00.0'
+                       ]
             ]
         ], 200);
     }

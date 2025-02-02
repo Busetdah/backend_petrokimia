@@ -12,6 +12,6 @@ class motor_conveyor_detail_motor1 extends Model
         'temperature',
         'vibration',
         'speed',
-        'airpressure'
+        'arus'
     ];
 }

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('safety_camera_detection', function (Blueprint $table) {
             $table->id();
             $table->string('status');
+            $table->binary('gambar');
             $table->timestamp('created_at')->useCurrent();
         });
     }

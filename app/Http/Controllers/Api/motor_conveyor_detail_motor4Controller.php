@@ -20,16 +20,16 @@ class motor_conveyor_detail_motor4Controller extends Controller
                 ['temperature' => '00.0',
                        'vibration' => '00.0',
                        'speed' => '00.0',
-                       'airpressure' => '00.0']
+                       'arus' => '00.0'
+                       ]
             ]
         ], 200);
     }
 
-    // Ambil hanya ID dari 10 data terakhir
     $ids = $motor_conveyor_details->pluck('id');
 
     return response()->json([
-        'data' => $motor_conveyor_details // Kirim seluruh koleksi atau properti tertentu
+        'data' => $motor_conveyor_details
     ], 200);
 }
 

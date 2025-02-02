@@ -11,7 +11,6 @@ class arm_robot_detail_motor1 extends Model
     protected $fillable = [
         'temperature',
         'vibration',
-        'speed',
         'airpressure'
     ];
 }

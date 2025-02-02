@@ -19,17 +19,16 @@ class arm_robot_detail_motor1Controller extends Controller
             'data' => [
                 ['temperature' => '00.0',
                        'vibration' => '00.0',
-                       'speed' => '00.0',
-                       'airpressure' => '00.0']
+                       'airpressure' => '00.0'
+                       ]
             ]
         ], 200);
     }
 
-    // Ambil hanya ID dari 10 data terakhir
     $ids = $arm_robot_details->pluck('id');
 
     return response()->json([
-        'data' => $arm_robot_details // Kirim seluruh koleksi atau properti tertentu
+        'data' => $arm_robot_details
     ], 200);
 }
 

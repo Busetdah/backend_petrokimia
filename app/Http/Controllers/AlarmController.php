@@ -43,35 +43,40 @@ class AlarmController extends Controller
 
         if ($motorConveyor->isNotEmpty()) {
             $motorConveyor->each(function ($item) {
-                $item->value = $item->value > 40 ? 0 : $item->value;
+                $item->value = $item->value > 50 ? 0 : $item->value;
+                $item->error = 'Ada gangguan pada ' . $item->source;
             });
             $alarms = $alarms->merge($motorConveyor);
         }
 
         if ($armRobot->isNotEmpty()) {
             $armRobot->each(function ($item) {
-                $item->value = $item->value > 40 ? 0 : $item->value;
+                $item->value = $item->value > 50 ? 0 : $item->value;
+                $item->error = 'Ada gangguan pada ' . $item->source;
             });
             $alarms = $alarms->merge($armRobot);
         }
 
         if ($Roll->isNotEmpty()) {
             $Roll->each(function ($item) {
-                $item->value = $item->value > 40 ? 0 : $item->value;
+                $item->value = $item->value > 50 ? 0 : $item->value;
+                $item->error = 'Ada gangguan pada ' . $item->source;
             });
             $alarms = $alarms->merge($Roll);
         }
 
         if ($pallet_dispenser->isNotEmpty()) {
             $pallet_dispenser->each(function ($item) {
-                $item->value = $item->value > 40 ? 0 : $item->value;
+                $item->value = $item->value > 50 ? 0 : $item->value;
+                $item->error = 'Ada gangguan pada ' . $item->source;
             });
             $alarms = $alarms->merge($pallet_dispenser);
         }
 
         if ($safety_conveyor->isNotEmpty()) {
             $safety_conveyor->each(function ($item) {
-                $item->value = $item->value > 40 ? 0 : $item->value;
+                $item->value = $item->value > 50 ? 0 : $item->value;
+                $item->error = 'Ada gangguan pada ' . $item->source;
             });
             $alarms = $alarms->merge($safety_conveyor);
         }

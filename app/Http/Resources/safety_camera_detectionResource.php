@@ -17,6 +17,7 @@ class safety_camera_detectionResource extends JsonResource
         return[
             'id' => $this->id,
             'status' => $this->status,
+            'gambar' => base64_encode($this->gambar),
             'created_at' => $this->created_at,
         ];
     }

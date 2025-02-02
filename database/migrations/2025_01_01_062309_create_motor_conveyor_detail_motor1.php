@@ -16,7 +16,7 @@ return new class extends Migration
             $table->float('temperature');
             $table->float('vibration');
             $table->float('speed');
-            $table->float('airpressure');
+            $table->float('arus');
             $table->timestamp('created_at')->useCurrent();
         });
     }

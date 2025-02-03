@@ -108,7 +108,7 @@ class HistoryController extends Controller
             if (isset($item->vibration) && $item->vibration < 70) {
                 $errors[] = 'vibrasinya ' . $item->vibration . '%';
             }
-            if (isset($item->temperature) && $item->temperature > 60) {
+            if (isset($item->temperature) && $item->temperature > 75) {
                 $errors[] = 'temperaturenya ' . $item->temperature . ' °C';
             }
             if (isset($item->speed) && $item->speed < 50) {

@@ -152,12 +152,6 @@ class AlarmController extends Controller
         if (isset($item->getaran_hz) && $item->getaran_hz < 10) {
             $errors[] = 'Getarannya ' . $item->getaran_hz . ' HZ';
         }
-        if (isset($item->lifting1) && $item->lifting1 < 10) {
-            $errors[] = 'Lifting 1 nya ' . $item->lifting1 . ' HZ';
-        }
-        if (isset($item->lifting2) && $item->lifting2 < 10) {
-            $errors[] = 'Lifting 2 nya ' . $item->lifting2 . ' HZ';
-        }
         if (isset($item->rpm_roll) && $item->rpm_roll < 100) {
             $errors[] = 'Kecepatan Rollnya ' . $item->rpm_roll . ' RPM';
         }

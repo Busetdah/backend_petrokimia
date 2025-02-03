@@ -138,7 +138,7 @@ class HistoryController extends Controller
             if (isset($item->rpm_motor) && $item->rpm_motor < 1500) {
                 $errors[] = 'Kecepatan Motornya ' . $item->rpm_motor . ' RPM';
             }
-            if (isset($item->getaran_hz) && $item->getaran_hz < 10) {
+            if (isset($item->getaran_hz) && $item->getaran_hz > 25) {
                 $errors[] = 'Getarannya ' . $item->getaran_hz . ' HZ';
             }
             if (isset($item->rpm_roll) && $item->rpm_roll < 100) {

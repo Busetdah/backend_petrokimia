@@ -175,11 +175,13 @@ class AlarmController extends Controller
         }
 
         if (!empty($errors)) {
+            $originalSource = $item->source;
             $item->source = $sourceMapping[$item->source] ?? $item->source;
-            $item->parent = $parentMapping[$item->source] ?? null;
+            $item->parent = $parentMapping[$originalSource] ?? null;
             $item->error = 'Terdapat gangguan pada ' . $item->source . ' dikarenakan ' . implode(', ', $errors) . '.';
             return $item;
         }
+
         return null;
     };
 

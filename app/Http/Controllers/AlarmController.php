@@ -111,7 +111,19 @@ class AlarmController extends Controller
         "roll_detail" => 'Roll Detail'
     ];
 
-    $checkForError = function ($item) use ($sourceMapping) {
+    $parentMapping = [
+        "motor_conveyor_detail_motor1" => "Motor Conveyor",
+        "motor_conveyor_detail_motor2" => "Motor Conveyor",
+        "motor_conveyor_detail_motor3" => "Motor Conveyor",
+        "motor_conveyor_detail_motor4" => "Motor Conveyor",
+        "arm_robot_detail_motor1" => "Arm Robot",
+        "pallete_dispenser_detail_right" => "Pallet Dispenser",
+        "pallete_dispenser_detail_left" => "Pallet Dispenser",
+        "safety_conveyor_detail_lifting_area" => "Safety Conveyor",
+        "roll_detail" => 'Roll'
+    ];
+
+    $checkForError = function ($item) use ($sourceMapping, $parentMapping) {
         $errors = [];
         if (isset($item->value) && $item->value < 70) {
             $errors[] = 'valuenya ' . $item->value;
@@ -164,6 +176,7 @@ class AlarmController extends Controller
 
         if (!empty($errors)) {
             $item->source = $sourceMapping[$item->source] ?? $item->source;
+            $item->parent = $parentMapping[$item->source] ?? null;
             $item->error = 'Terdapat gangguan pada ' . $item->source . ' dikarenakan ' . implode(', ', $errors) . '.';
             return $item;
         }

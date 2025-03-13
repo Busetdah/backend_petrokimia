@@ -100,49 +100,49 @@ class HistoryController extends Controller
             "roll_detail" => "Roll Detail"
         ];
 
-        $checkForError = function ($item) use ($sourceMapping) {
+            $checkForError = function ($item) use ($sourceMapping, $parentMapping) {
             $errors = [];
             if (isset($item->value) && $item->value < 70) {
                 $errors[] = 'valuenya ' . $item->value;
             }
             if (isset($item->vibration) && $item->vibration < 70) {
-                $errors[] = 'vibrasinya ' . $item->vibration . '%';
+                $errors[] = 'vibrasinya ' . $item->vibration . '%. Disarankan untuk memeriksa masalah pada bearing, ketidakseimbangan, atau penyumbatan mekanis, serta periksa kondisi rantai. Jika kering maka lakukan pelumasan oli';
             }
             if (isset($item->temperature) && $item->temperature > 75) {
-                $errors[] = 'temperaturenya ' . $item->temperature . ' °C';
+                $errors[] = 'temperaturenya ' . $item->temperature . ' °C. Disarankan untuk check oli pada motor';
             }
             if (isset($item->speed) && $item->speed < 50) {
-                $errors[] = 'kecepatannya ' . $item->speed . ' RPM';
+                $errors[] = 'kecepatannya ' . $item->speed . ' RPM. Disarankan untuk memeriksa kondisi mekanikal motor';
             }
             if (isset($item->arus) && $item->arus < 150) {
-                $errors[] = 'arusnya ' . $item->arus . ' A';
+                $errors[] = 'arusnya ' . $item->arus . ' A. Disarankan untuk Check oleh tim listin ONM';
             }
             if (isset($item->airpressure) && $item->airpressure < 7) {
-                $errors[] = 'Air Pressurenya ' . $item->airpressure . ' bar';
+                $errors[] = 'Air Pressurenya ' . $item->airpressure . ' bar. Check air service unit/regulator plant air, connector dan compressor';
             }
             if (isset($item->airpressureforward) && $item->airpressureforward < 8) {
-                $errors[] = 'Air Pressure Forwardnya ' . $item->airpressureforward . ' bar';
+                $errors[] = 'Air Pressure Forwardnya ' . $item->airpressureforward . ' bar. Check air service unit/regulator plant air, connector dan compressor ';
             }
             if (isset($item->airpressureretract) && $item->airpressureretract < 8) {
-                $errors[] = 'Air Pressure Retractnya ' . $item->airpressureretract . ' bar';
+                $errors[] = 'Air Pressure Retractnya ' . $item->airpressureretract . ' bar. Check air service unit/regulator plant air, connector dan compressor ';
             }
             if (isset($item->reedswitch) && $item->reedswitch < 1) {
-                $errors[] = 'Reedswitchnya ' . $item->reedswitch;
+                $errors[] = 'Reedswitchnya ' . $item->reedswitch . '. Check posisi reedswitch, apa ada indikasi perubahan posisi / check visual kondisi kabel';
             }
             if (isset($item->rotationgrip) && $item->rotationgrip < 0) {
-                $errors[] = 'Rotation Gripnya ' . $item->rotationgrip . ' °';
+                $errors[] = 'Rotation Gripnya ' . $item->rotationgrip . ' °. Check kondisi mekanikal, kondisi bearing pada rotation grip dan kondisi plant air. Apakah ada penyumbatan pada connector';
             }
             if (isset($item->palletdistance) && $item->palletdistance < 10) {
                 $errors[] = 'Jarak Palletenya ' . $item->palletdistance . ' cm';
             }
             if (isset($item->rpm_motor) && $item->rpm_motor < 1500) {
-                $errors[] = 'Kecepatan Motornya ' . $item->rpm_motor . ' RPM';
+                $errors[] = 'Kecepatan Motornya ' . $item->rpm_motor . ' RPM. Check pada mekanikal indikasi pada penyumbatan pada motor';
             }
             if (isset($item->getaran_hz) && $item->getaran_hz > 25) {
-                $errors[] = 'Getarannya ' . $item->getaran_hz . ' HZ';
+                $errors[] = 'Getarannya ' . $item->getaran_hz . ' HZ. Check kondisi mekanikal bearing, pada bagian baut ada yang kendor / check kondisi bearing';
             }
             if (isset($item->rpm_roll) && $item->rpm_roll < 100) {
-                $errors[] = 'Kecepatan Rollnya ' . $item->rpm_roll . ' RPM';
+                $errors[] = 'Kecepatan Rollnya ' . $item->rpm_roll . ' RPM. Check pada mekanikal indikasi pada penyumbatan pada roller';
             }
             if (isset($item->presentase) && $item->presentase < 70) {
                 $errors[] = 'Presentasenya ' . $item->presentase . ' RPM';
@@ -150,12 +150,15 @@ class HistoryController extends Controller
             if (isset($item->elapsedtime) && $item->elapsedtime < 70) {
                 $errors[] = 'Elapsed Time nya ' . $item->elapsedtime . ' RPM';
             }
-
+    
             if (!empty($errors)) {
+                $originalSource = $item->source;
                 $item->source = $sourceMapping[$item->source] ?? $item->source;
+                $item->parent = $parentMapping[$originalSource] ?? null;
                 $item->error = 'Terdapat gangguan pada ' . $item->source . ' dikarenakan ' . implode(', ', $errors) . '.';
                 return $item;
             }
+    
             return null;
         };
 
